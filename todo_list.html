@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todo_list</title>
+  </head>
+  <body>
+    <input type="text" id="text" />
+    <button onclick="addTodo()">저장</button>
+
+    <ul class="list"></ul>
+
+    <script>
+      let listArr = [];
+      console.log(listArr);
+      const addTodo = () => {
+        const text = document.querySelector("#text");
+        const txtValue = text.value;
+        console.log(text);
+        console.log("txtValue:", txtValue);
+
+        if(txtValue == ''){
+          alert('값을 입력해주세요.');
+          return;
+        }
+        listArr.push(txtValue);
+        console.log(listArr);
+        createList();
+        text.value = '';
+      };
+
+      const createList = () => {
+        const list = document.querySelector(".list");
+        list.innerHTML = '';
+
+        listArr.forEach((item,index) => {
+          list.innerHTML += `
+            <li class = "list_item">${index + 1}. ${item}</li>
+          `
+        })
+      };
+    </script>
+  </body>
+</html>
